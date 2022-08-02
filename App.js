@@ -9,14 +9,15 @@ import Categories from './src/components/Categories';
 
 export default function App() {
 
-const [input, setInput] = useState("")
+  const [pickedCat, setPickedCat] = useState("")
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
       <Header />
-      <SearchBar />
-      <Categories />
+      <Text>{pickedCat}</Text>
+      <SearchBar setPickedCat={setPickedCat}/>
+      <Categories pickedCat={pickedCat} setPickedCat = {setPickedCat} />
       <Restaurants />
     </View>
   );

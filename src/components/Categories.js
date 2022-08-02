@@ -3,8 +3,8 @@ import CategoryItem from './CategoryItem';
 import { useState } from 'react';
 
 
-export default function Categories() {
-    const [pickedCat, setPickedCat] = useState("")
+export default function Categories({pickedCat, setPickedCat}) {
+  
 
     const commonCategories = [
         {   name: 'Burger',

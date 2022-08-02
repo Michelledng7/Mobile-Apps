@@ -1,13 +1,15 @@
 import { StyleSheet, Text, View } from 'react-native'
-
+import useRestaurant from '../Hooks/useRestaurant'
 
 
 export default function Restaurants() {
-  return (
+
+  const [{data, loading, error}, searchRes] = useRestaurant([])
+   return (
     <View style = {styles.container}>
-        <Text style = {styles.header}>Restaurants</Text>
+        <Text style = {styles.header}>Top Restaurants</Text>
     </View>
-  )
+   )
 }
 
 const styles = StyleSheet.create({
@@ -17,6 +19,8 @@ const styles = StyleSheet.create({
     //flex: 1,
   },
     header: {
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontSize : 20,
+        paddingBottom: 10
     }
 })
