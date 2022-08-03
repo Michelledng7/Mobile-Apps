@@ -15,7 +15,7 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar style="auto" />
       <Header />
-      <Text>{pickedCat}</Text>
+      <Text>App{pickedCat}</Text>
       <SearchBar setPickedCat={setPickedCat}/>
       <Categories pickedCat={pickedCat} setPickedCat = {setPickedCat} />
       <Restaurants searchTerm ={pickedCat}/>

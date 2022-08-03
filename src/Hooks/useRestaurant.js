@@ -16,12 +16,13 @@ export default function useRestaurant() {
         })
 
         try {
-        const response = await yelp.get('/search/repositories?q=${searchTerm}+language:${language}&per_page=1')
+        const response = await yelp.get('/search/repositories?q=${searchTerm}+language:${language}&per_page=20')
         setResults({
             data: response.data.items,
             loading: false,
             error: null
         })
+        console.log('hooks' + searchTerm)
         } 
         catch (error ) {
             setResults({
