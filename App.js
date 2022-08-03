@@ -9,7 +9,7 @@ import Categories from './src/components/Categories';
 
 export default function App() {
 
-  const [pickedCat, setPickedCat] = useState("")
+  const [pickedCat, setPickedCat] = useState("react")
 
   return (
     <View style={styles.container}>
@@ -18,7 +18,7 @@ export default function App() {
       <Text>{pickedCat}</Text>
       <SearchBar setPickedCat={setPickedCat}/>
       <Categories pickedCat={pickedCat} setPickedCat = {setPickedCat} />
-      <Restaurants />
+      <Restaurants searchTerm ={pickedCat}/>
     </View>
   );
 }

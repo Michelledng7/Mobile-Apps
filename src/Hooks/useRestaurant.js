@@ -16,7 +16,7 @@ export default function useRestaurant() {
         })
 
         try {
-        const response = await yelp.get('/search/repositories?q=${searchTerm}+language:${language}&per_page=20')
+        const response = await yelp.get('/search/repositories?q=${searchTerm}+language:${language}&per_page=1')
         setResults({
             data: response.data.items,
             loading: false,
@@ -34,6 +34,5 @@ export default function useRestaurant() {
       console.log(response)
       
     }
-   
  return [results, searchRes]
 } 
