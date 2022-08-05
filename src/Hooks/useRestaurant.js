@@ -2,38 +2,45 @@ import { useState } from "react"
 import yelp from "../api/yelp"
 
 export default function useRestaurant() {
-    const[results, setResults] = useState({
+    const[result, setResult] = useState({
         data: null,
         loading: false,
         error: null
          })
 
-    const searchRes = async (searchTerm) => {
-        setResults({
+    const searchResItem = async (id) => {
+        setResult({
             data: null,
             loading: true,
             error: null
         })
 
-        try {
-        const response = await yelp.get('/search/repositories?q=${searchTerm}+language:${language}&per_page=20')
-        setResults({
-            data: response.data.items,
+        try {   
+        const response = await yelp.get('/search/', {
+            params: {
+                limit: 20,
+                location: 'Toronto',
+                term: id
+            }
+        })
+        setResult({
+            data: response.data,
             loading: false,
             error: null
         })
-        console.log('hooks' + searchTerm)
+        console.log('oneitem' + searchTerm)
+        console.log('itemresponse: ' + response)
         } 
         catch (error ) {
-            setResults({
+            setResult({
                 data: null,
                 loading: false,
-                error: "Something went wrong"
+                error: "single item error"
             })
           console.error(error)
       }
-      console.log(response)
+      
       
     }
- return [results, searchRes]
+ return [result, searchResItem]
 } 

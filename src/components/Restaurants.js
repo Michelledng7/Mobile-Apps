@@ -1,17 +1,21 @@
 import { useEffect } from 'react'
-import { StyleSheet, Text, View, ActivityIndicator, FlatList} from 'react-native'
-import useRestaurant from '../Hooks/useRestaurant'
+import { StyleSheet, Text, View, ActivityIndicator, FlatList, TouchableOpacity} from 'react-native'
+import useRestaurants from '../Hooks/useRestaurants'
+import RestaurantItem from './RestaurantItem'
 
 
 export default function Restaurants({searchTerm}) {
 
-  const [{data, loading, error}, searchRes] = useRestaurant([])
+  const [{data, loading, error}, searchRess] = useRestaurants([])
 
   useEffect(() => {
-    searchRes(searchTerm)
+    searchRess(searchTerm)
   }, [searchTerm])
-  console.log({data: data, loading, error})
+
+  console.log({data, loading, error})
   console.log('searchTerm is:' +  searchTerm)
+  console.log(data)
+
 
   if (loading) return <ActivityIndicator size = 'large' marginVertical = {40} />
   if (error) return <View style = {styles.container}>
@@ -20,11 +24,14 @@ export default function Restaurants({searchTerm}) {
    return (
     <View style = {styles.container}>
         <Text style = {styles.header}>Top Restaurants</Text>
-        <FlatList data = {data} keyExtractor = {(item)=> item.id} 
-        renderItem = {({item}) => {
-          return <Text sytle= {styles.header}>{item.name}</Text>
-          console.log("hello")
-        }} />
+          <FlatList style = {styles.list} data = {data} keyExtractor = {(item)=> item.id} 
+            renderItem = {({item}) => {
+            return  <TouchableOpacity > 
+             <RestaurantItem sytle= {styles.list} restaurant = {item}/>
+             
+            </TouchableOpacity>
+            }
+            } />
     </View>
    )
 }
@@ -34,10 +41,16 @@ const styles = StyleSheet.create({
     marginHorizontal: 25,
     marginVertical: 15
   },
-    header: {
+  
+  header: {
         fontWeight: 'bold',
         fontSize : 20,
         paddingBottom: 10
-    }
-    
+    },
+
+  list: {
+      fontSize: 30,
+      fontFamily: '',
+      marginVertical: 20
+   }
 })
