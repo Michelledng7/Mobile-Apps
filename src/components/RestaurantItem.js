@@ -23,10 +23,10 @@ export default function RestaurantItem({restaurant}) {
              
     return (
         <View style = {[styles.container, styles.elevation]}>
-            <Image style = {styles.image} source = {{uri: restaurant.image_url}} />
+            <Image style = {styles.image} source = {{uri: restaurant.image_url? restaurant.image_url: null}} />
             
-            <Text>{restaurant.name}</Text>
-            <Text>{restaurant.rating}</Text> 
+            <Text >{restaurant.name}      </Text>
+            <Text>{restaurant.rating}    </Text> 
             <Text>{restaurant.price}</Text>
                 
         </View>
@@ -35,13 +35,14 @@ export default function RestaurantItem({restaurant}) {
 
 const styles = StyleSheet.create({
     container: {
-        marginHorizontal: 25,
-        marginVertical: 15,
+        marginHorizontal: 0,
+        marginVertical: 10,
         borderRadius: 30,
-        backgroundColor: 'yellow',
+        backgroundColor: 'lightyellow',
         alignSelf: 'stretch',
         alignItems: 'center',
-        height: 100,
+        height: 80,
+        width: '100%',
         flexDirection: 'row'
     },
     elevation,
@@ -50,10 +51,10 @@ const styles = StyleSheet.create({
         fontSize : 20
     },
     image: {
-        width: 100,
-        height: 100,
+        width: 80,
+        height: 80,
         borderRadius: 50
     }
-  
+   
       })
 

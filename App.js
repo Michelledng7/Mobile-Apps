@@ -1,33 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View} from 'react-native';
-import Header from './src/components/Header';
-import SearchBar from './src/components/SearchBar';
-import CategoryItem from './src/components/CategoryItem';
-import Restaurants from './src/components/Restaurants';
-import {useState} from 'react';
-import Categories from './src/components/Categories';
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import HomeScreen from "./src/screens/HomeScreen";
+import RestaurantScreen from "./src/screens/RestaurantScreen";
 
-export default function App() {
 
-  const [pickedCat, setPickedCat] = useState("react")
 
-  return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <Header />
-      <Text>App{pickedCat}</Text>
-      <SearchBar setPickedCat={setPickedCat}/>
-      <Categories pickedCat={pickedCat} setPickedCat = {setPickedCat} />
-      <Restaurants searchTerm ={pickedCat}/>
-    </View>
-  );
-}
+const navigator = createStackNavigator({
+    Home: HomeScreen,
+    Restaurant: RestaurantScreen
+},{
+    initialRouteName: 'Home',
+    defaultNavigationOptions: {
+      title: 'Restaurant Finder',
+    }
+})
 
-const styles = StyleSheet.create({
-  container: {
-    //flex: 1,
-    backgroundColor: '#fff',
-    // alignItems: 'left',
-    // justifyContent: 'center',
-  },
-});
+export default createAppContainer(navigator);

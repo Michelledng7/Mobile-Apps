@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { StyleSheet, Text, View, ActivityIndicator, FlatList, TouchableOpacity} from 'react-native'
 import useRestaurants from '../Hooks/useRestaurants'
+import Categories from './Categories'
 import RestaurantItem from './RestaurantItem'
 
 
@@ -23,6 +24,7 @@ export default function Restaurants({searchTerm}) {
                     </View>
    return (
     <View style = {styles.container}>
+    
         <Text style = {styles.header}>Top Restaurants</Text>
           <FlatList style = {styles.list} data = {data} keyExtractor = {(item)=> item.id} 
             renderItem = {({item}) => {
@@ -39,18 +41,18 @@ export default function Restaurants({searchTerm}) {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: 25,
-    marginVertical: 15
+    marginVertical: 10
   },
   
   header: {
         fontWeight: 'bold',
         fontSize : 20,
-        paddingBottom: 10
+        paddingBottom: 5
     },
 
   list: {
-      fontSize: 30,
+      fontSize: 50,
       fontFamily: '',
-      marginVertical: 20
+     // marginVertical: 20
    }
 })
