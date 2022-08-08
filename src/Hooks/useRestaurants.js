@@ -18,8 +18,8 @@ export default function useRestaurants() {
         try {
         const response = await yelp.get('/search', {
             params: {
-                limit: 20,
-                location: 'Toronto',
+                limit: 3,
+                location: 'Melbourne',
                 term: searchTerm
         }})
             setResults({

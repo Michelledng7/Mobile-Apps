@@ -7,8 +7,4 @@ export default axios.create({
     headers: {
         Authorization: 'Bearer ' + 'oD25Cqqd75CkWcZQMwjY0MPLc01lExOiqozVIAr7xvwBCNNDCAgjYkH7At-W-LayhgeYpXHE-Sp2bjKfJ-mR1C4xr-3Da8_oA1HVLBcQUWOza64J7d4H8XfE7ZbmYnYx'
     },
-    params: {
-        limit: 20,
-        location: 'San Francisco',
-    }
 })

@@ -16,20 +16,18 @@ export default function useRestaurant() {
         })
 
         try {   
-        const response = await yelp.get('/search/', {
+        const response = await yelp.get(`/${id}`, {
             params: {
-                limit: 20,
-                location: 'Toronto',
-                term: id
+                location: 'Melbourne'
             }
         })
         setResult({
-            data: response.data,
+            data: response.data.photos,
             loading: false,
             error: null
         })
-        console.log('oneitem' + searchTerm)
-        console.log('itemresponse: ' + response)
+       
+        console.log('itemresponse: ' + response.photos)
         } 
         catch (error ) {
             setResult({

@@ -1,35 +1,26 @@
-import { View, Text, StyleSheet, Image, ActivityIndicator} from "react-native";
-import useRestaurant from "../Hooks/useRestaurant";
-import {useEffect} from 'react'
+import { View, Text, StyleSheet, Image, TouchableOpacity,ActivityIndicator} from "react-native";
+import {withNavigation} from 'react-navigation';
 import { elevation } from "../common/styles";
 
 
-export default function RestaurantItem({restaurant}) {
-
-    // const [{data, loading, error}, searchResItem] = useRestaurant([])
-
-    // useEffect(() => {
-    //     searchResItem(id)
-    // },[id])
-   
-        console.log('restaurant is:' +  restaurant)
-   // console.log({data: data, loading, error})
-
-    // if (loading) return <ActivityIndicator size = 'large' marginVertical = {40} />
-    // if (error) return 
-    //         <View style = {styles.container}>
-    //             <Text style = {styles.header}>rseitemerror</Text>
-    //         </View>
+function RestaurantItem({restaurant, navigation}) {
+    console.log( 'restaurant is: ' + {restaurant})
+ 
              
     return (
+        <TouchableOpacity onPress={() => navigation.navigate('Restaurant', {id: restaurant.id})}>
         <View style = {[styles.container, styles.elevation]}>
             <Image style = {styles.image} source = {{uri: restaurant.image_url? restaurant.image_url: null}} />
-            
-            <Text >{restaurant.name}      </Text>
-            <Text>{restaurant.rating}    </Text> 
-            <Text>{restaurant.price}</Text>
-                
-        </View>
+           
+            <View style = {styles.infoContainer}>
+                <Text style = {styles.header}>{restaurant.name}      </Text>
+               <View style = {styles.info}>
+                    <Text style = {styles.rating}>{restaurant.rating} </Text> 
+                    <Text style = {styles.amount}>{restaurant.price}</Text>
+               </View>
+            </View>
+         </View>
+         </TouchableOpacity>
         )
 }
 
@@ -48,13 +39,28 @@ const styles = StyleSheet.create({
     elevation,
     header: {
         fontWeight: 'bold',
-        fontSize : 20
+        fontSize : 16,
+        marginBottom: 4
     },
     image: {
         width: 80,
         height: 80,
         borderRadius: 50
-    }
-   
-      })
+    },
+    infoContainer: {
+        paddingHorizontal: 10,
+    },
+    info: {
+        fontWeight: 'bold',
+        flexDirection: 'row'
+      },
+      rating: {
+        marginRight: 20
+      },
+      amount: {
+        color: 'gold'
+      }
+    })
+
+    export default withNavigation(RestaurantItem);
 

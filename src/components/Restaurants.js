@@ -24,10 +24,9 @@ export default function Restaurants({searchTerm}) {
                     </View>
    return (
     <View style = {styles.container}>
-    
         <Text style = {styles.header}>Top Restaurants</Text>
-          <FlatList style = {styles.list} data = {data} keyExtractor = {(item)=> item.id} 
-            renderItem = {({item}) => {
+          <FlatList style = {styles.list} data = {data} keyExtractor = {(item)=> item.id}  
+            renderItem = {({item}) => { 
             return  <TouchableOpacity > 
              <RestaurantItem sytle= {styles.list} restaurant = {item}/>
              

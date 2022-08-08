@@ -34,7 +34,7 @@ export default function HomeScreen() {
             image: require('../assets/images/steak.png'),
         }]
 
-  const [pickedCat, setPickedCat] = useState("react")
+  const [pickedCat, setPickedCat] = useState("");
 
   return (
     <View style={styles.container}>
@@ -50,7 +50,7 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
     container: {
-      //flex: 1,
+     // flex: 1,
       backgroundColor: 'rgb(255, 255, 255)',
       // alignItems: 'center',
       // justifyContent: 'center',
