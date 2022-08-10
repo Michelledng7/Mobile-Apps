@@ -1,15 +1,11 @@
 import {Text, View, StyleSheet, Image, TouchableOpacity, FlatList} from 'react-native';
 import CategoryItem from './CategoryItem';
-import { useState } from 'react';
+
 
 
 export default function Categories({data, pickedCat, setPickedCat}) {
-  
-
-
   return (
-         
-        <FlatList 
+         <FlatList 
             data={data} 
             renderItem = {({item, index}) => {
             return ( 
