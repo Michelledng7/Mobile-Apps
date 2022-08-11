@@ -4,9 +4,7 @@ import { elevation } from "../common/styles";
 
 
 function RestaurantItem({restaurant, navigation}) {
-    console.log( 'restaurant is: ' + {restaurant})
- 
-             
+    console.log( 'restaurant is: ' + {restaurant})         
     return (
         <TouchableOpacity onPress={() => navigation.navigate('Restaurant', {id: restaurant.id})}>
         <View style = {[styles.container, styles.elevation]}>

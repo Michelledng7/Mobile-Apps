@@ -36,9 +36,7 @@ export default function useRestaurant() {
                 error: "single item error"
             })
           console.error(error)
-      }
-      
-      
+        }
     }
  return [result, searchResItem]
 } 

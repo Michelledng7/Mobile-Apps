@@ -1,10 +1,9 @@
-import {Text, View, StyleSheet, Image, TouchableOpacity, FlatList} from 'react-native';
+import {View, FlatList} from 'react-native';
 import CategoryItem from './CategoryItem';
-
-
 
 export default function Categories({data, pickedCat, setPickedCat}) {
   return (
+    <View style = {{marginBottom: 10}}>
          <FlatList 
             data={data} 
             renderItem = {({item, index}) => {
@@ -16,6 +15,7 @@ export default function Categories({data, pickedCat, setPickedCat}) {
             showsHorizontalScrollIndicator = {false}
             keyExtractor = {(cat) => cat.name}
         />
+        </View>
     
     )
 }
